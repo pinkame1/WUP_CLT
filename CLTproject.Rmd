@@ -106,14 +106,11 @@ print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
 
 ```
 
-
-
-This graph shows that there is one peakand the mean is 'r mean(my1000$k9)', the sd is 'r sd(my1000$k9)'. 
-
 ```{r}
 options(digits=2)
 ```
 
+This graph shows that there is one peak and the mean is `r mean(my1000$k9)`,  the sd is `r sd(my1000$k9)`. 
 
 
 
@@ -137,7 +134,28 @@ print(paste('mean = ', mean(my1000$k16),' sd = ',sd(my1000$k16)))
 
 ```
 
-There is only one peak in this graph just as the first graph. The mean 'r mean(my1000$k16)' and the sd is ' rsd(1000$k16)'. 
+There is only one peak in this graph just as the other graphs. The mean `r mean(my1000$k16)` and the sd is `rsd(1000$k16)`. 
 
 
+```{r}
+numb= 25
+Hdata= Homers_data[sample(1:1000,size=numb*1000,replace=T), "kkardashtemp"]
+mdata<-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k25 = x.avg
 
+p <- ggplot(my1000, aes(x=k25))+ 
+  geom_density() +
+
+# Add mean line
+  geom_vline(aes(xintercept=mean(k25)),
+            color="blue", linetype="dashed", size=1)
+ p + ggtitle("n = 25")+
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k25),' sd = ',sd(my1000$k25)))
+
+```
+
+
+This graph shows that there is a pattern within all these graphs which is one peak. This graph has a mean of `r mean(my1000$k25)`, the sd is `r sd(my1000$k25)`. 
