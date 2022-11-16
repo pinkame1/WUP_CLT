@@ -108,11 +108,11 @@ print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
 
 
 
-```{r}
-options(digit=2)
-```
+This graph shows that there is one peakand the mean is 'r mean(my1000$k9)', the sd is 'r sd(my1000$k9)'. 
 
-This graph shows that there is one peal and the mean is 'r mean(my1000$k9)', the sd is 'r sd(my1000$k9)'. 
+```{r}
+options(digits=2)
+```
 
 
 
@@ -124,19 +124,20 @@ mdata<-matrix(Hdata,nrow=1000,ncol=numb)
 x.avg <- apply(mdata,1,mean)
 my1000$k16 = x.avg
 
-p <- ggplot(my1000, aes(x=k16)) + 
+p <- ggplot(my1000, aes(x=k16))+ 
   geom_density() +
 
 # Add mean line
   geom_vline(aes(xintercept=mean(k16)),
             color="blue", linetype="dashed", size=1)
- p + ggtitle("n = 9") +
+ p + ggtitle("n = 16")+
   xlab("temperature") + ylab(" density")
 
 print(paste('mean = ', mean(my1000$k16),' sd = ',sd(my1000$k16)))
 
 ```
 
-There is only one peak in this graph and the mean is ' mean (my1000$k16) and the sd is 'r sd(my1000$k16).
+There is only one peak in this graph just as the first graph. The mean 'r mean(my1000$k16)' and the sd is ' rsd(1000$k16)'. 
+
 
 
