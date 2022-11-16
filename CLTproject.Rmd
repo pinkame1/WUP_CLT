@@ -63,6 +63,8 @@ print(paste('mean = ', mean(my1000$k2),' sd = ',sd(my1000$k2)))
 
 ### There are 3 peaks in the density plot. You pick two people you can get MM,MF.FM,or FF. these are all equally likey so the little peak on left is all the FF's while the little peak on the right is all the MM's so the big one in the middle is both the MF and FM in the same bag so-to-speak.  
 
+
+
 ```{r}
 numb = 4
 Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
@@ -134,7 +136,7 @@ print(paste('mean = ', mean(my1000$k16),' sd = ',sd(my1000$k16)))
 
 ```
 
-There is only one peak in this graph just as the other graphs. The mean `r mean(my1000$k16)` and the sd is `rsd(1000$k16)`. 
+There is only one peak in this graph just as the first graph. The mean `r mean(my1000$k16)` and the sd is `rsd(1000$k16)`. 
 
 
 ```{r}
@@ -158,4 +160,32 @@ print(paste('mean = ', mean(my1000$k25),' sd = ',sd(my1000$k25)))
 ```
 
 
-This graph shows that there is a pattern within all these graphs which is one peak. This graph has a mean of `r mean(my1000$k25)`, the sd is `r sd(my1000$k25)`. 
+This graph shows that there might be a pattern within all these graphs which is having one peak. This graph has a mean of `r mean(my1000$k25)`, the sd is `r sd(my1000$k25)`. 
+
+
+```{r}
+numb= 36
+Hdata= Homers_data[sample(1:1000,size=numb*1000,replace=T), "kkardashtemp"]
+mdata<-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k36 = x.avg
+
+p <- ggplot(my1000, aes(x=k36))+ 
+  geom_density() +
+
+# Add mean line
+  geom_vline(aes(xintercept=mean(k36)),
+            color="blue", linetype="dashed", size=1)
+ p + ggtitle("n = 36")+
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k36),' sd = ',sd(my1000$k36)))
+
+```
+
+This graph shows and finalizes that this graph has a peak and that these graphs have a pattern. The mean is `r mean(my1000$k36)`, the sd is `r sd(my1000$k36)`. 
+
+
+# Conclusion
+From all the samples, the mean stayed the same as the sd changes depending on sample size. sd/square root of the sample size gives the new sd.
+
