@@ -1,6 +1,6 @@
 ---
 title: "CLT_WUP"
-author: "Your Name"
+author: "America Olivo"
 output: 
   html_document:
     number_sections: true
@@ -113,6 +113,7 @@ options(digit=2)
 ```
 
 This graph shows that there is one peal and the mean is 'r mean(my1000$k9)', the sd is 'r sd(my1000$k9)'. 
+
 
 
 
